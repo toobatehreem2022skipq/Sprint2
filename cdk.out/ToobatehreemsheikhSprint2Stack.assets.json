@@ -1,0 +1,32 @@
+{
+  "version": "16.0.0",
+  "files": {
+    "ccd13dc260122f831c9094f21fe3f71ef16eec8eb3cff072592409aa675c6693": {
+      "source": {
+        "path": "asset.ccd13dc260122f831c9094f21fe3f71ef16eec8eb3cff072592409aa675c6693",
+        "packaging": "zip"
+      },
+      "destinations": {
+        "current_account-current_region": {
+          "bucketName": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}",
+          "objectKey": "ccd13dc260122f831c9094f21fe3f71ef16eec8eb3cff072592409aa675c6693.zip",
+          "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-file-publishing-role-${AWS::AccountId}-${AWS::Region}"
+        }
+      }
+    },
+    "38977527e2235f9bbdf6bb24006bbc5bf251eddd19ef9f33b2f88c0e081d68d6": {
+      "source": {
+        "path": "ToobatehreemsheikhSprint2Stack.template.json",
+        "packaging": "file"
+      },
+      "destinations": {
+        "current_account-current_region": {
+          "bucketName": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}",
+          "objectKey": "38977527e2235f9bbdf6bb24006bbc5bf251eddd19ef9f33b2f88c0e081d68d6.json",
+          "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-file-publishing-role-${AWS::AccountId}-${AWS::Region}"
+        }
+      }
+    }
+  },
+  "dockerImages": {}
+}

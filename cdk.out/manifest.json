@@ -1,0 +1,113 @@
+{
+  "version": "16.0.0",
+  "artifacts": {
+    "Tree": {
+      "type": "cdk:tree",
+      "properties": {
+        "file": "tree.json"
+      }
+    },
+    "ToobatehreemsheikhSprint2Stack.assets": {
+      "type": "cdk:asset-manifest",
+      "properties": {
+        "file": "ToobatehreemsheikhSprint2Stack.assets.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+      }
+    },
+    "ToobatehreemsheikhSprint2Stack": {
+      "type": "aws:cloudformation:stack",
+      "environment": "aws://unknown-account/unknown-region",
+      "properties": {
+        "templateFile": "ToobatehreemsheikhSprint2Stack.template.json",
+        "tags": {
+          "Cohort": "Orion",
+          "Name": "ToobatehreemsheikhSprint2"
+        },
+        "validateOnSynth": false,
+        "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
+        "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/38977527e2235f9bbdf6bb24006bbc5bf251eddd19ef9f33b2f88c0e081d68d6.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
+        "additionalDependencies": [
+          "ToobatehreemsheikhSprint2Stack.assets"
+        ],
+        "lookupRole": {
+          "arn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-lookup-role-${AWS::AccountId}-${AWS::Region}",
+          "requiresBootstrapStackVersion": 8,
+          "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+        }
+      },
+      "dependencies": [
+        "ToobatehreemsheikhSprint2Stack.assets"
+      ],
+      "metadata": {
+        "/ToobatehreemsheikhSprint2Stack": [
+          {
+            "type": "aws:cdk:stack-tags",
+            "data": [
+              {
+                "Key": "Cohort",
+                "Value": "Orion"
+              },
+              {
+                "Key": "Name",
+                "Value": "ToobatehreemsheikhSprint2"
+              }
+            ]
+          }
+        ],
+        "/ToobatehreemsheikhSprint2Stack/Toobatehreemsheikh_WH_Lambda/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ToobatehreemsheikhWHLambdaServiceRoleB640DF34"
+          }
+        ],
+        "/ToobatehreemsheikhSprint2Stack/Toobatehreemsheikh_WH_Lambda/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ToobatehreemsheikhWHLambda60C09938"
+          }
+        ],
+        "/ToobatehreemsheikhSprint2Stack/ToobaTehreemRule/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ToobaTehreemRuleD6D77BA6"
+          }
+        ],
+        "/ToobatehreemsheikhSprint2Stack/ToobaTehreemRule/AllowEventRuleToobatehreemsheikhSprint2StackToobatehreemsheikhWHLambdaD88F58EF": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ToobaTehreemRuleAllowEventRuleToobatehreemsheikhSprint2StackToobatehreemsheikhWHLambdaD88F58EFA1D1AA19"
+          }
+        ],
+        "/ToobatehreemsheikhSprint2Stack/CDKMetadata/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadata"
+          }
+        ],
+        "/ToobatehreemsheikhSprint2Stack/CDKMetadata/Condition": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadataAvailable"
+          }
+        ],
+        "/ToobatehreemsheikhSprint2Stack/BootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BootstrapVersion"
+          }
+        ],
+        "/ToobatehreemsheikhSprint2Stack/CheckBootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CheckBootstrapVersion"
+          }
+        ]
+      },
+      "displayName": "ToobatehreemsheikhSprint2Stack"
+    }
+  }
+}

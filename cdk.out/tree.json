@@ -1,0 +1,253 @@
+{
+  "version": "tree-0.1",
+  "tree": {
+    "id": "App",
+    "path": "",
+    "children": {
+      "Tree": {
+        "id": "Tree",
+        "path": "Tree",
+        "constructInfo": {
+          "fqn": "constructs.Construct",
+          "version": "10.0.105"
+        }
+      },
+      "ToobatehreemsheikhSprint2Stack": {
+        "id": "ToobatehreemsheikhSprint2Stack",
+        "path": "ToobatehreemsheikhSprint2Stack",
+        "children": {
+          "Toobatehreemsheikh_WH_Lambda": {
+            "id": "Toobatehreemsheikh_WH_Lambda",
+            "path": "ToobatehreemsheikhSprint2Stack/Toobatehreemsheikh_WH_Lambda",
+            "children": {
+              "ServiceRole": {
+                "id": "ServiceRole",
+                "path": "ToobatehreemsheikhSprint2Stack/Toobatehreemsheikh_WH_Lambda/ServiceRole",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "ToobatehreemsheikhSprint2Stack/Toobatehreemsheikh_WH_Lambda/ServiceRole/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::IAM::Role",
+                      "aws:cdk:cloudformation:props": {
+                        "assumeRolePolicyDocument": {
+                          "Statement": [
+                            {
+                              "Action": "sts:AssumeRole",
+                              "Effect": "Allow",
+                              "Principal": {
+                                "Service": "lambda.amazonaws.com"
+                              }
+                            }
+                          ],
+                          "Version": "2012-10-17"
+                        },
+                        "managedPolicyArns": [
+                          {
+                            "Fn::Join": [
+                              "",
+                              [
+                                "arn:",
+                                {
+                                  "Ref": "AWS::Partition"
+                                },
+                                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+                              ]
+                            ]
+                          }
+                        ],
+                        "tags": [
+                          {
+                            "key": "Cohort",
+                            "value": "Orion"
+                          },
+                          {
+                            "key": "Name",
+                            "value": "ToobatehreemsheikhSprint2"
+                          }
+                        ]
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_iam.CfnRole",
+                      "version": "2.10.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_iam.Role",
+                  "version": "2.10.0"
+                }
+              },
+              "Code": {
+                "id": "Code",
+                "path": "ToobatehreemsheikhSprint2Stack/Toobatehreemsheikh_WH_Lambda/Code",
+                "children": {
+                  "Stage": {
+                    "id": "Stage",
+                    "path": "ToobatehreemsheikhSprint2Stack/Toobatehreemsheikh_WH_Lambda/Code/Stage",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.AssetStaging",
+                      "version": "2.10.0"
+                    }
+                  },
+                  "AssetBucket": {
+                    "id": "AssetBucket",
+                    "path": "ToobatehreemsheikhSprint2Stack/Toobatehreemsheikh_WH_Lambda/Code/AssetBucket",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_s3.BucketBase",
+                      "version": "2.10.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_s3_assets.Asset",
+                  "version": "2.10.0"
+                }
+              },
+              "Resource": {
+                "id": "Resource",
+                "path": "ToobatehreemsheikhSprint2Stack/Toobatehreemsheikh_WH_Lambda/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::Lambda::Function",
+                  "aws:cdk:cloudformation:props": {
+                    "code": {
+                      "s3Bucket": {
+                        "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
+                      },
+                      "s3Key": "ccd13dc260122f831c9094f21fe3f71ef16eec8eb3cff072592409aa675c6693.zip"
+                    },
+                    "role": {
+                      "Fn::GetAtt": [
+                        "ToobatehreemsheikhWHLambdaServiceRoleB640DF34",
+                        "Arn"
+                      ]
+                    },
+                    "handler": "WHLambda.lambda_handler",
+                    "runtime": "python3.6",
+                    "tags": [
+                      {
+                        "key": "Cohort",
+                        "value": "Orion"
+                      },
+                      {
+                        "key": "Name",
+                        "value": "ToobatehreemsheikhSprint2"
+                      }
+                    ]
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_lambda.CfnFunction",
+                  "version": "2.10.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_lambda.Function",
+              "version": "2.10.0"
+            }
+          },
+          "ToobaTehreemRule": {
+            "id": "ToobaTehreemRule",
+            "path": "ToobatehreemsheikhSprint2Stack/ToobaTehreemRule",
+            "children": {
+              "Resource": {
+                "id": "Resource",
+                "path": "ToobatehreemsheikhSprint2Stack/ToobaTehreemRule/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::Events::Rule",
+                  "aws:cdk:cloudformation:props": {
+                    "description": "This is my WH rule to trigger lambda every 1 minute",
+                    "scheduleExpression": "rate(1 minute)",
+                    "state": "ENABLED",
+                    "targets": [
+                      {
+                        "id": "Target0",
+                        "arn": {
+                          "Fn::GetAtt": [
+                            "ToobatehreemsheikhWHLambda60C09938",
+                            "Arn"
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_events.CfnRule",
+                  "version": "2.10.0"
+                }
+              },
+              "AllowEventRuleToobatehreemsheikhSprint2StackToobatehreemsheikhWHLambdaD88F58EF": {
+                "id": "AllowEventRuleToobatehreemsheikhSprint2StackToobatehreemsheikhWHLambdaD88F58EF",
+                "path": "ToobatehreemsheikhSprint2Stack/ToobaTehreemRule/AllowEventRuleToobatehreemsheikhSprint2StackToobatehreemsheikhWHLambdaD88F58EF",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::Lambda::Permission",
+                  "aws:cdk:cloudformation:props": {
+                    "action": "lambda:InvokeFunction",
+                    "functionName": {
+                      "Fn::GetAtt": [
+                        "ToobatehreemsheikhWHLambda60C09938",
+                        "Arn"
+                      ]
+                    },
+                    "principal": "events.amazonaws.com",
+                    "sourceArn": {
+                      "Fn::GetAtt": [
+                        "ToobaTehreemRuleD6D77BA6",
+                        "Arn"
+                      ]
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_lambda.CfnPermission",
+                  "version": "2.10.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_events.Rule",
+              "version": "2.10.0"
+            }
+          },
+          "CDKMetadata": {
+            "id": "CDKMetadata",
+            "path": "ToobatehreemsheikhSprint2Stack/CDKMetadata",
+            "children": {
+              "Default": {
+                "id": "Default",
+                "path": "ToobatehreemsheikhSprint2Stack/CDKMetadata/Default",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.CfnResource",
+                  "version": "2.10.0"
+                }
+              },
+              "Condition": {
+                "id": "Condition",
+                "path": "ToobatehreemsheikhSprint2Stack/CDKMetadata/Condition",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.CfnCondition",
+                  "version": "2.10.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "constructs.Construct",
+              "version": "10.0.105"
+            }
+          }
+        },
+        "constructInfo": {
+          "fqn": "aws-cdk-lib.Stack",
+          "version": "2.10.0"
+        }
+      }
+    },
+    "constructInfo": {
+      "fqn": "aws-cdk-lib.App",
+      "version": "2.10.0"
+    }
+  }
+}
